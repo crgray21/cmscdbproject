@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<body>
+<center>
+ <h1> CLOTHING TABLE</h1>
+<table border=1>
+<thead>
+<td>ProductId</td><td>PrisonName</td><td>sizeOfClothing</td><td>Quantity</td><td>TypeOfProduct</td><td>NameOfProduct</td><td>Eid</td>
+</thead>
+{% for row in rows %}
+<tr>
+<td>{{row[0]}}</td><td>{{row[1]}}</td><td> {{
+row[2]}}</td><td>{{row[3]}}</td><td>{{row[4]}}</td><td>{{row[5]}}</td><td>{{row[6]}}</td>
+ </tr>
+{% endfor %}
+</table>
+</center>
+</body>
+</html>

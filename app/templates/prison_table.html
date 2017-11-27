@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<body>
+<center>
+ <h1> PRISON TABLE</h1>
+<table border=1>
+<thead>
+<td>PrisonName</td><td>Location_of_prison</td><td>size_of_prison</td><td>PrisonGender</td><td>Director</td>
+</thead>
+{% for row in rows %}
+<tr>
+<td>{{row[0]}}</td><td>{{row[1]}}</td><td> {{
+row[2]}}</td><td>{{row[3]}}</td><td>{{row[4]}}</td>
+ </tr>
+{% endfor %}
+</table>
+</center>
+</body>
+</html>
