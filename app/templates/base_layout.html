@@ -1,0 +1,13 @@
+<html>
+    <head>
+        {% if title %}
+        <title>{{title}} - Prison</title>
+        {% else %}
+        <title>Welcome to the PrisonDB</title>
+        {% endif %}
+    </head>
+    <body><!--Add in the base format and navbars here-->
+            {% block content %}{% endblock %}
+            <!--Add in any footers here-->
+    </body>
+</html>
