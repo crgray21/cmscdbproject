@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<body>
+<center>
+ <h1> EMPLOYEE TABLE</h1>
+<table border=1>
+<thead>
+<td>Eid</td><td>PrisonName</td><td>FirstName</td><td>LastName</td><td>Email</td><td>HireDate(mm/dd/yy)</td><td>BirthDate(mm/dd/yy)</td><td>JobType</td>
+</thead>
+{% for row in rows %}
+<tr>
+<td>{{row[0]}}</td><td>{{row[1]}}</td><td> {{
+row[2]}}</td><td>{{row[3]}}</td><td>{{row[4]}}</td><td>{{row[5].strftime("%m/%d/%y")}}</td><td>{{row[6].strftime("%m/%d/%y")}}</td><td>{{row[7]}}</td><td>{{row[8]}}</td>
+ </tr>
+{% endfor %}
+</table>
+</center>
+</body>
+</html>

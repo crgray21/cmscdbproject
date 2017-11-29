@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<body>
+<center>
+ <h1> SUPERVISOR TABLE</h1>
+<table border=1>
+<thead>
+<td>Eid</td><td>PrisonName</td><td>Supervisor_ID</td>
+</thead>
+{% for row in rows %}
+<tr>
+<td>{{row[0]}}</td><td>{{row[1]}}</td><td> {{row[2]}}</td>
+ </tr>
+{% endfor %}
+</table>
+</center>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<body>
+<center>
+ <h1> PRISONER TABLE</h1>
+<table border=1>
+<thead>
+<td>PrisonerId</td><td>RoomId</td><td>PrisonName</td><td>FirstName</td><td>LastName</td><td>BirthDate(mm/dd/yy)</td><td>Height</td>
+<td>Weight</td><td>Race</td>
+</thead>
+{% for row in rows %}
+<tr>
+<td>{{row[0]}}</td><td>{{row[1]}}</td><td> {{
+row[2]}}</td><td>{{row[3]}}</td><td>{{row[4]}}</td><td>{{row[5].strftime("%m/%d/%y")}}</td><td>{{row[6]}}</td><td>{{row[7]}}</td><td>{{row[8]}}</td>
+    <td>{{row[9]}}</td>
+ </tr>
+{% endfor %}
+</table>
+</center>
+</body>
+</html>

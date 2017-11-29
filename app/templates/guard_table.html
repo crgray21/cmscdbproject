@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<body>
+<center>
+ <h1> GUARD TABLE</h1>
+<table border=1>
+<thead>
+<td>Eid</td><td>PrisonName</td>
+</thead>
+{% for row in rows %}
+<tr>
+<td>{{row[0]}}</td><td>{{row[1]}}</td>
+ </tr>
+{% endfor %}
+</table>
+</center>
+</body>
+</html>
