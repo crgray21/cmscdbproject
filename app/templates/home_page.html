@@ -4,74 +4,55 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-
-    <!-- Bootstrap core CSS -->
-    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="../static/stylesheets/cover.css" rel="stylesheet">
-
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <title>Home Page</title>
+    <link href="../static/stylesheets/bootstrap.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-
-  <body style = "background-image: url(../static/images/prison.jpg); background-repeat: no-repeat; background-size: contain">
-
-    <div class="site-wrapper">
-        <div class="site-wrapper-inner">
-            <div class="cover-container">
-                <div class="masthead clearfix" style = "background: rgb(175, 81, 9); border-bottom: 8px rgb(12, 12, 12) box-shadow: 0px 2px 5px #333131">
-                    <div class="inner" style = "width: 40%; margin: 0 auto">
-                    <h3 class="masthead-brand">PrisonDB</h3>
-                    <nav>
-                        <ul class="nav masthead-nav" style = "margin-top: 10px; margin-bottom: 10px">
-                        <li><a href="#">Reports</a></li>
-                        <li><a href="#">Queries</a></li>
-                        <li><a href="#">Login</a></li>
-                        </ul>
-                    </nav>
-                    </div>
-                </div>
+  <body>
+      <nav class="navbar navbar-inverse navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">PrisonDB</a>
             </div>
-          <div class="inner cover">
-            <h1 class="cover-heading">Welcome to PrisonDB</h1>
-            <!--<p class="lead"></p>
-            <p class="lead">
-              <a href="#" class="btn btn-lg btn-default">Learn more</a>
-            </p>-->
-          </div>
-
-          <div class="mastfoot">
-            <div class="inner">
-              <p>By <span style = "color: white">Cory Gray</span> & <span style = "color: white">Kunal Patel</span>.</p>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"></a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tables<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Prison Rooms</a></li>
+                    <li><a href="#">Prisons</a></li>
+                    <li><a href="#">Prisoners</a></li>
+                    <li><a href="#">Employees</a></li>
+                    <li><a href="#">Supervisors</a></li>
+                    <li><a href="#">Phone Numbers</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Inventory</a></li>
+                    <li><a href="#">Clothing</a></li>
+                    <li><a href="#">Guards</a></li>
+                    <li><a href="#">Events</a></li>
+                    <li><a href="#">Event Grades</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Login</a></li>
+              </ul>
             </div>
           </div>
+        </nav>
 
-        </div>
+        <h1 style = "text-align:center">Welcome to PrisonDB</h1>
 
-    </div>
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+    <script type="text/javascript" src="js/jquery-1.8.0.js"></script>
+    <script src="../static/scripts/bootstrap.min.js"></script>
   </body>
 </html>

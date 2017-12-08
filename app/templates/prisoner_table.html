@@ -1,21 +1,63 @@
-<!doctype html>
-<html>
-<body>
-<center>
- <h1> PRISONER TABLE</h1>
-<table border=1>
-<thead>
-<td>PrisonerId</td><td>RoomId</td><td>PrisonName</td><td>FirstName</td><td>LastName</td><td>BirthDate(mm/dd/yy)</td><td>Height</td>
-<td>Weight</td><td>Race</td>
-</thead>
-{% for row in rows %}
-<tr>
-<td>{{row[0]}}</td><td>{{row[1]}}</td><td> {{
-row[2]}}</td><td>{{row[3]}}</td><td>{{row[4]}}</td><td>{{row[5].strftime("%m/%d/%y")}}</td><td>{{row[6]}}</td><td>{{row[7]}}</td><td>{{row[8]}}</td>
-    <td>{{row[9]}}</td>
- </tr>
-{% endfor %}
-</table>
-</center>
-</body>
-</html>
+{% extends "index.html" %}
+{%block title%}Room Table{%endblock%}
+{%block head%}
+    {{ super() }}
+{%endblock%}
+{%block content%} 
+    <center>
+            <form name = "form1" action = {{ url_for('insertPrisoner') }} method = "POST" role = "form" id = "prisonerInsertForm">
+                    <div>
+                        <p>Insert
+                        <input type = "text" name = "PrisonerId" placeholder="Prisoner Id">
+                        <input type = "text" name = "RoomId" placeholder="Room Id">
+                        <input type = "text" name = "PrisonName" placeholder="Prison Name">
+                        <input type = "date" name = "BirthDate" placeholder="BirthDate: mm/dd/yyyy">
+                        <input type = "text" name = "FirstName" placeholder="First Name">   
+                        <input type = "text" name = "LastName" placeholder="Last Name">    
+                        <input type = "number" name = "Height" placeholder="Height (inches)"> 
+                        <input type = "number" name = "Weight" placeholder="Weight (lbs)">   
+                        <input type = "text" name="Race" placeholder="Race"> 
+                        <input type = "submit" value = "Insert">
+                        </p>
+                    </div>
+            </form>
+            
+            <form name = "form2" action = {{ url_for('deletePrisoner') }} method = "POST" role = "form" id = "prisonerDeleteForm">
+                    <p>Delete   
+                        <input type = "text" name = "PrisonerId2" placeholder="Prisoner Id">
+                        <input type = "text" name = "PrisonName2" placeholder="Prison Name">
+                        <input type = "submit" value = "Delete">
+                    </p>
+            </form>
+            
+            <form name = "form3" action = {{ url_for('updatePrisoner') }} method = "POST" role = "form" id = "prisonerUpdateForm">
+                    <p>Update
+                        <select name="UpdateColumn" form="prisonerUpdateForm">
+                                        <option value="FirstName">First Name</option>
+                                        <option value="LastName">Last Name</option>
+                                        <option type = "number" value="Height">Height (inches)</option>
+                                        <option type = "number" value="Weight">Weight (lbs)</option>
+                                        <option value = "Race">Race</option>
+                        </select>
+                        <input type = "text" name = "Value" placeholder="Value">
+                        <input type = "text" name = "PrisonerId3" placeholder="Prisoner Id">
+                        <input type = "text" name = "PrisonName3" placeholder="Prison Name">
+                        <input type = "submit" value = "Update">
+                    </p>
+            </form>
+        <h1>PRISONER TABLE</h1>
+            <table border=1>
+            <thead>
+            <td>PrisonerId</td><td>RoomId</td><td>PrisonName</td><td>FirstName</td><td>LastName</td><td>BirthDate(mm/dd/yy)</td><td>Height</td>
+            <td>Weight</td><td>Race</td>
+            </thead>
+            {% for row in rows %}
+            <tr>
+            <td>{{row[0]}}</td><td>{{row[1]}}</td><td> {{
+            row[2]}}</td><td>{{row[3]}}</td><td>{{row[4]}}</td><td>{{row[5].strftime("%m/%d/%y")}}</td><td>{{row[6]}}</td><td>{{row[7]}}</td><td>{{row[8]}}</td>
+                <td>{{row[9]}}</td>
+                </tr>
+            {% endfor %}
+            </table>
+    </center>
+{%endblock%}

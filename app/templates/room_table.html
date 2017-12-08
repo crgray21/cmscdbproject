@@ -1,18 +1,86 @@
-<!doctype html>
-<html>
-<body>
+{% extends "index.html" %}
+{%block title%}Room Table{%endblock%}
+{%block head%}
+    {{ super() }}
+{%endblock%}
+{%block content%}
+<!--
+<script>
+$('select[name="Update Column"]').change(function(){
+            var selectedVal = $(this).val();
+            if(selectedVal === "Type_of_room" ){
+                $('.t_val').html('').html('');
+            }else{
+
+            }
+</script>
+-->
 <center>
- <h1> ROOM IN THE PRISON TABLE</h1>
-<table border=1>
-<thead>
-<td>RoomId</td><td>PrisonName</td><td>Type</td>
-</thead>
-{% for row in rows %}
-<tr>
-<td>{{row[0]}}</td><td>{{row[1]}}</td><td> {{row[2]}}</td>
- </tr>
-{% endfor %}
-</table>
+
+    <form name = "form1" action = {{ url_for('insertPrisonRoom') }} method = "POST" role = "form" id = "prisonRoomInsertForm">
+        <div>
+            <p>Insert
+            <input type = "text" name = "RoomId" placeholder="Room Id">
+            <input type = "text" name = "PrisonName" placeholder="Prison Name">   
+            <select name = "Type_of_room" form="prisonRoomInsertForm">
+                    <option value="Prison cell">Prison cell</option>
+                    <option value="Gym">Gym</option>
+                    <option value="Office">Office</option>
+                    <option value="Bathroom">Bathroom</option>
+                    <option value="Classroom">Classroom</option>
+                    <option value="Security">Security</option>
+                    <option value="Janitor">Janitor</option>
+            </select>
+            <input type = "submit" value = "Insert">
+            </p>
+        </div>
+    </form>
+
+    <form name = "form2" action = {{ url_for('deletePrisonRoom') }} method = "POST" role = "form" id = "prisonRoomDeleteForm">
+        <p>Delete
+            <input type = "text" name = "RoomId2" placeholder="Room Id">
+            <input type = "text" name = "PrisonName2" placeholder="Prison Name">
+            <input type = "submit" value = "Delete">
+        </p>
+    </form>
+
+    <form name = "form3" action = {{ url_for('updatePrisonRoom') }} method = "POST" role = "form" id = "prisonRoomUpdateForm">
+        <p>Update
+            <select name = "UpdateColumn" form="prisonRoomUpdateForm">
+                            <option value="RoomId">Room Id</option>
+                            <option value="PrisonName">Prison Name</option>
+                            <option value="Type_of_room">Room Type</option>
+            </select>
+            <input type = "text" name = "Value" placeholder="Value">
+            <input type = "text" name = "RoomId3" placeholder="Room Id">
+            <input type = "text" name = "PrisonName3" placeholder="Prison Name">
+            <input type = "submit" value = "Update">
+        </p>
+     </form>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    <!-- Categories: success (green), info (blue), warning (yellow), danger (red) -->
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <!-- <strong>Title</strong> --> {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+
+    <h1>PRISON ROOM TABLE</h1>
+   <table border=1>
+   <thead>
+   <td>RoomId</td><td>PrisonName</td><td>Type</td>
+   </thead>
+   {% for row in rows %}
+   <tr>
+   <td>{{row[0]}}</td><td>{{row[1]}}</td><td> {{row[2]}}</td>
+    </tr>
+   {% endfor %}
+   </table>
 </center>
-</body>
-</html>
+{%endblock%}

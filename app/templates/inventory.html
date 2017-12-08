@@ -1,25 +1,23 @@
 {% extends "index.html" %}
-{%block title%}Clothing{%endblock%}
+{%block title%}Inventory{%endblock%}
 {%block head%}
     {{ super() }}
 {%endblock%}
 {%block content%}
 <center>
-        <form name = "form1" action = {{ url_for('insertClothing') }} method = "POST" role = "form" id = "InsertClothingForm">
+        <form name = "form1" action = {{ url_for('insertInventory') }} method = "POST" role = "form" id = "InsertInventoryForm">
                 <div>
                     <p>Insert
                     <input type = "text" name = "Pid" placeholder="Product Id">
-                    <input type = "text" name = "PrisonName" placeholder="Prison Name">
-                    <select name ="sizeOfClothing" form="InsertClothingForm">
-                            <option value="XS">XS</option>
-                            <option value="S">S</option>
-                            <option value="M">M</option>
-                            <option value="L">L</option>
-                            <option value="XL">XL</option>
-                            <option value="XXL">XXL</option>
-                    </select>
+                    <input type = "text" name = "PrisonName" placeholder="Prison Name">   
                     <input type = "number" name = "Quantity" placeholder="Quantity">   
-                    <input type = "text" name = "TypeOfProduct" placeholder="Product Type">
+                    <select name ="UpdateColumn" form="InsertInventoryForm">
+                            <option value="Office supplies">Office Supplies</option>
+                            <option value="Bathroom supplies">Bathroom Supplies</option>
+                            <option value="Cleaning supplies">Cleaning Supplies</option>
+                            <option value="Kitchen">Kitchen</option>
+                            <option value="Gym">Gym</option>
+                    </select>  
                     <input type = "text" name = "NameOfProduct" placeholder="Product Name">   
                     <input type = "text" name = "Eid" placeholder="Eid">                
                     <input type = "submit" value = "Insert">
@@ -27,7 +25,7 @@
                 </div>
             </form>
 
-            <form name = "form2" action = {{ url_for('deleteClothing') }} method = "POST" role = "form" id = "DeleteClothingForm">
+            <form name = "form2" action = {{ url_for('deleteInventory') }} method = "POST" role = "form" id = "DeleteInventoryForm">
                 <p>Delete
                     <input type = "text" name = "Pid2" placeholder="Product Id">
                     <input type = "text" name = "PrisonName2" placeholder="Prison Name">
@@ -35,13 +33,12 @@
                 </p>
             </form>
         
-            <form name = "form3" action = {{ url_for('updateClothing') }} method = "POST" role = "form" id = "UpdateClothingForm">
+            <form name = "form3" action = {{ url_for('updateInventory') }} method = "POST" role = "form" id = "UpdateInventoryForm">
                 <p>Update
-                    <select name ="UpdateColumn2" form="UpdateClothingForm">
+                    <select name ="UpdateColumn2" form="UpdateInventoryForm">
                                     <option value="NameOfProduct">Product Name</option>
-                                    <option type = "number" value="Quanitity">Quantity</option>
+                                    <option type = "number" value="Quantity">Quantity</option>
                                     <option value="TypeOfProduct">Product Category</option>
-                                    <option value="sizeOfClothing">Size</option>
                     </select>
                     <input type = "text" name = "Value" placeholder="Value">
                     <input type = "text" name = "Pid3" placeholder="Product Id">
@@ -49,15 +46,15 @@
                     <input type = "submit" value = "Update">
                 </p>
              </form>
-    <h1>CLOTHING TABLE</h1>
+    <h1>INVENTORY TABLE</h1>
    <table border=1>
    <thead>
-   <td>ProductId</td><td>PrisonName</td><td>sizeOfClothing</td><td>Quantity</td><td>TypeOfProduct</td><td>NameOfProduct</td><td>Eid</td>
+   <td>ProductId</td><td>PrisonName</td><td>Quantity</td><td>TypeOfProduct</td><td>NameOfProduct</td><td>Eid</td>
    </thead>
    {% for row in rows %}
    <tr>
    <td>{{row[0]}}</td><td>{{row[1]}}</td><td> {{
-   row[2]}}</td><td>{{row[3]}}</td><td>{{row[4]}}</td><td>{{row[5]}}</td><td>{{row[6]}}</td>
+   row[2]}}</td><td>{{row[3]}}</td><td>{{row[4]}}</td><td>{{row[5]}}</td>
     </tr>
    {% endfor %}
    </table>

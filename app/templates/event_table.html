@@ -1,19 +1,59 @@
-<!doctype html>
-<html>
-<body>
+{% extends "index.html" %}
+{%block title%}Event Table{%endblock%}
+{%block head%}
+    {{ super() }}
+{%endblock%}
+{%block content%}
 <center>
- <h1> EVENT TABLE</h1>
-<table border=1>
-<thead>
-<td>EventId</td><td>PrisonName</td><td>PrisonerId</td><td>DateOfEvent</td><td>NameOfEvent</td><td>CategoryOfEvent</td>
-</thead>
-{% for row in rows %}
-<tr>
-<td>{{row[0]}}</td><td>{{row[1]}}</td><td> {{
-row[2]}}</td><td>{{row[3].strftime("%m/%d/%y")}}</td><td>{{row[4]}}</td><td>{{row[5]}}</td><td>{{row[6]}}</td>
- </tr>
-{% endfor %}
-</table>
-</center>
-</body>
-</html>
+        <form name = "form1" action = {{ url_for('insertEvent') }} method = "POST" role = "form" id = "InsertEventForm">
+                <div>
+                    <p>Insert
+                    <input type = "text" name = "Eid" placeholder="Event Id">
+                    <input type = "text" name = "PrisonName" placeholder="Prison Name">   
+                    <input type = "text" name = "PrisonerId" placeholder="Prisoner Id">   
+                    <input type = "date" name = "DateOfEvent" placeholder="Event Date"> 
+                    <input type = "text" name = "NameOfEvent" placeholder="Event Name">   
+                    <select name ="UpdateColumn" form="InsertEventForm">
+                            <option value="Assault">Assault</option>
+                            <option value="Volunter">Volunteer</option>
+                            <option value="Therapy">Therapy</option>
+                    </select> 
+                    <input type = "submit" value = "Insert">
+                    </p>
+                </div>
+            </form>
+
+            <form name = "form2" action = {{ url_for('deleteEvent') }} method = "POST" role = "form" id = "DeleteEventForm">
+                <p>Delete
+                    <input type = "text" name = "Eid2" placeholder="Eid">
+                    <input type = "text" name = "PrisonName2" placeholder="Prison Name">
+                    <input type = "submit" value = "Delete">
+                </p>
+            </form>
+        
+            <form name = "form3" action = {{ url_for('updateEvent') }} method = "POST" role = "form" id = "UpdateEventForm">
+                <p>Update
+                    <select name ="UpdateColumn2" form="UpdateEventForm">
+                                    <option value="NameOfEvent">Event Name</option>
+                                    <option value="CategoryOfEvent">Event Category</option>
+                    </select>
+                    <input type = "text" name = "Value" placeholder="Value">
+                    <input type = "text" name = "Eid3" placeholder="Eid">
+                    <input type = "text" name = "PrisonName3" placeholder="Prison Name">
+                    <input type = "submit" value = "Update">
+                </p>
+             </form>
+    <h1>EVENT TABLE</h1>
+   <table border=1>
+   <thead>
+   <td>EventId</td><td>PrisonName</td><td>PrisonerId</td><td>DateOfEvent</td><td>NameOfEvent</td><td>CategoryOfEvent</td>
+   </thead>
+   {% for row in rows %}
+   <tr>
+   <td>{{row[0]}}</td><td>{{row[1]}}</td><td> {{
+   row[2]}}</td><td>{{row[3].strftime("%m/%d/%y")}}</td><td>{{row[4]}}</td><td>{{row[5]}}</td><td>{{row[6]}}</td>
+    </tr>
+   {% endfor %}
+   </table>
+   </center>
+{%endblock%}

@@ -1,19 +1,59 @@
-<!doctype html>
-<html>
-<body>
+{% extends "index.html" %}
+{%block title%}Employee Table{%endblock%}
+{%block head%}
+    {{ super() }}
+{%endblock%}
+{%block content%}
 <center>
- <h1> EMPLOYEE TABLE</h1>
-<table border=1>
-<thead>
-<td>Eid</td><td>PrisonName</td><td>FirstName</td><td>LastName</td><td>Email</td><td>HireDate(mm/dd/yy)</td><td>BirthDate(mm/dd/yy)</td><td>JobType</td>
-</thead>
-{% for row in rows %}
-<tr>
-<td>{{row[0]}}</td><td>{{row[1]}}</td><td> {{
-row[2]}}</td><td>{{row[3]}}</td><td>{{row[4]}}</td><td>{{row[5].strftime("%m/%d/%y")}}</td><td>{{row[6].strftime("%m/%d/%y")}}</td><td>{{row[7]}}</td><td>{{row[8]}}</td>
- </tr>
-{% endfor %}
-</table>
-</center>
-</body>
-</html>
+        <form name = "form1" action = {{ url_for('insertEmployee') }} method = "POST" role = "form" id = "InsertEmployeeForm">
+                <div>
+                    <p>Insert
+                    <input type = "text" name = "Eid" placeholder="Eid">
+                    <input type = "text" name = "PrisonName" placeholder="Prison Name">   
+                    <input type = "text" name = "FirstName" placeholder="First Name">   
+                    <input type = "text" name = "LastName" placeholder="Last Name"> 
+                    <input type = "text" name = "Email" placeholder="Email">   
+                    <input type = "date" name = "HireDate" placeholder="Hire Date"> 
+                    <input type = "date" name = "BirthDate" placeholder="Birth Date">   
+                    <input type = "text" name = "JobType" placeholder="Job Type"> 
+                    <input type = "submit" value = "Insert">
+                    </p>
+                </div>
+            </form>
+
+            <form name = "form2" action = {{ url_for('deleteEmployee') }} method = "POST" role = "form" id = "DeleteEmployeeForm">
+                <p>Delete
+                    <input type = "text" name = "Eid2" placeholder="Eid">
+                    <input type = "text" name = "PrisonName2" placeholder="Prison Name">
+                    <input type = "submit" value = "Delete">
+                </p>
+            </form>
+        
+            <form name = "form3" action = {{ url_for('updateEmployee') }} method = "POST" role = "form" id = "UpdateEmployeeForm">
+                <p>Update
+                    <select name ="UpdateColumn" form="UpdateEmployeeForm">
+                                    <option value="JobType">Job Type</option>
+                                    <option value="FirstName">First Name</option>
+                                    <option value="LastName">Last Name</option>
+                    </select>
+                    <input type = "text" name = "Value" placeholder="Value">
+                    <input type = "text" name = "Eid3" placeholder="Eid">
+                    <input type = "text" name = "PrisonName3" placeholder="Prison Name">
+                    <input type = "submit" value = "Update">
+                </p>
+             </form>
+
+    <h1>EMPLOYEE TABLE</h1>
+   <table border=1>
+   <thead>
+   <td>Eid</td><td>PrisonName</td><td>FirstName</td><td>LastName</td><td>Email</td><td>HireDate(mm/dd/yy)</td><td>BirthDate(mm/dd/yy)</td><td>JobType</td>
+   </thead>
+   {% for row in rows %}
+   <tr>
+   <td>{{row[0]}}</td><td>{{row[1]}}</td><td> {{
+   row[2]}}</td><td>{{row[3]}}</td><td>{{row[4]}}</td><td>{{row[5].strftime("%m/%d/%y")}}</td><td>{{row[6].strftime("%m/%d/%y")}}</td><td>{{row[7]}}</td><td>{{row[8]}}</td>
+    </tr>
+   {% endfor %}
+   </table>
+   </center>
+{%endblock%}

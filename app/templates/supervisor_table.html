@@ -1,18 +1,52 @@
-<!doctype html>
-<html>
-<body>
+{% extends "index.html" %}
+{%block title%}Supervisor Table{%endblock%}
+{%block head%}
+    {{ super() }}
+{%endblock%}
+{%block content%}
 <center>
- <h1> SUPERVISOR TABLE</h1>
-<table border=1>
-<thead>
-<td>Eid</td><td>PrisonName</td><td>Supervisor_ID</td>
-</thead>
-{% for row in rows %}
-<tr>
-<td>{{row[0]}}</td><td>{{row[1]}}</td><td> {{row[2]}}</td>
- </tr>
-{% endfor %}
-</table>
+        <form name = "form1" action = {{ url_for('insertSupervisor') }} method = "POST" role = "form" id = "InsertSupervisorForm">
+                <div>
+                    <p>Insert
+                    <input type = "text" name = "Eid" placeholder="Eid"> 
+                    <input type = "text" name = "PrisonName" placeholder="Prison Name">  
+                    <input type = "text" name="SupervisorId" placeholder="Supervisor Id"> 
+                    <input type = "submit" value = "Insert">
+                    </p>
+                </div>
+            </form>
+        
+            <form name = "form2" action = {{ url_for('deleteSupervisor') }} method = "POST" role = "form" id = "DeleteSupervisorForm">
+                <p>Delete   
+                    <input type = "text" name = "Eid2" placeholder="Eid">
+                    <input type = "text" name = "PrisonName2" placeholder="Prison Name">
+                    <input type = "submit" value = "Delete">
+                </p>
+            </form>
+        
+            <!--<form name = "form3"  method = "POST" role = "form" id = "UpdateSupervisorForm">
+                <p>Update
+                    <select name = "UpdateColumn" form="UpdateSupervisorForm">
+                                    <option value="Location_of_prison">Location</option>
+                                    <option type = "number" value="size_of_prison">Size</option>
+                                    <option value="PrisonGender">Gender</option>
+                                    <option value="Director">Director Name</option>
+                    </select>
+                    <input type = "text" name = "Value" placeholder="Value">
+                    <input type = "text" name = "PrisonName3" placeholder="Prison Name">
+                    <input type = "submit" value = "Update">
+                </p>
+            </form>-->
+    <h1>SUPERVISOR TABLE</h1>
+   <table border=1>
+   <thead>
+   <td>Eid</td><td>PrisonName</td><td>Supervisor_ID</td>
+   </thead>
+   {% for row in rows %}
+   <tr>
+   <td>{{row[0]}}</td><td>{{row[1]}}</td><td> {{row[2]}}</td>
+    </tr>
+   {% endfor %}
+   </table>
 </center>
-</body>
-</html>
+{%endblock%}

@@ -1,19 +1,66 @@
-<!doctype html>
-<html>
-<body>
+{% extends "index.html" %}
+{%block title%}Grade Table{%endblock%}
+{%block head%}
+    {{ super() }}
+{%endblock%}
+{%block content%}
 <center>
- <h1> EVENT_GRADE TABLE</h1>
-<table border=1>
-<thead>
-<td>EventId</td><td>Eid</td><td>PrisonerId</td><td>PrisonName</td><td>Grade</td>
-</thead>
-{% for row in rows %}
-<tr>
-<td>{{row[0]}}</td><td>{{row[1]}}</td><td> {{
-row[2]}}</td><td>{{row[3]}}</td><td>{{row[4]}}</td>
- </tr>
-{% endfor %}
-</table>
-</center>
-</body>
-</html>
+        <form name = "form1" action = {{ url_for('insertGrade') }} method = "POST" role = "form" id = "InsertGradeForm">
+                <div>
+                    <p>Insert
+                    <input type = "text" name = "EventId" placeholder="Event Id">
+                    <input type = "text" name = "Eid" placeholder="Eid">
+                    <input type = "text" name = "PrisonerId" placeholder="Prisoner Id">
+                    <input type = "text" name = "PrisonName" placeholder="Prison Name"> 
+                    <select name="UpdateColumn" form="InsertGradeForm">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+            </select>   
+                    <input type = "submit" value = "Insert">
+                    </p>
+                </div>
+        </form>
+        
+        <form name = "form2" action = {{ url_for('deleteGrade') }} method = "POST" role = "form" id = "DeleteGradeForm">
+                <p>Delete   
+                    <input type = "text" name = "EventId2" placeholder="Event Id">
+                    <input type = "text" name = "Eid2" placeholder="Eid">
+                    <input type = "text" name = "PrisonerId2" placeholder="Prisoner Id">
+                    <input type = "text" name = "PrisonName2" placeholder="Prison Name">
+                    <input type = "submit" value = "Delete">
+                </p>
+        </form>
+        
+        <form name = "form3" action = {{ url_for('updateGrade') }} method = "POST" role = "form" id = "UpdateGradeForm">
+                <p>Update
+                        <input type = "text" name = "EventId3" placeholder="Event Id">
+                        <input type = "text" name = "Eid3" placeholder="Eid">
+                        <input type = "text" name = "PrisonerId3" placeholder="Prisoner Id">
+                        <input type = "text" name = "PrisonName3" placeholder="Prison Name"> 
+                        <select name="UpdateColumn3" form="UpdateGradeForm">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                        </select>   
+                        <input type = "submit" value = "Update">
+                </p>
+        </form>
+    <h1>EVENT GRADE TABLE</h1>
+   <table border=1>
+   <thead>
+   <td>EventId</td><td>Eid</td><td>PrisonerId</td><td>PrisonName</td><td>Grade</td>
+   </thead>
+   {% for row in rows %}
+   <tr>
+   <td>{{row[0]}}</td><td>{{row[1]}}</td><td> {{
+   row[2]}}</td><td>{{row[3]}}</td><td>{{row[4]}}</td>
+    </tr>
+   {% endfor %}
+   </table>
+   </center>
+{%endblock%}

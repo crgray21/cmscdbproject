@@ -1,18 +1,58 @@
-<!doctype html>
-<html>
-<body>
+{% extends "index.html" %}
+{%block title%}Number Table{%endblock%}
+{%block head%}
+    {{ super() }}
+{%endblock%}
+{%block content%}
 <center>
- <h1> PHONENUMBER TABLE</h1>
-<table border=1>
-<thead>
-<td>Eid</td><td>PrisonName</td><td>Phonenumber</td><td>Number Type</td>
-</thead>
-{% for row in rows %}
-<tr>
-<td>{{row[0]}}</td><td>{{row[1]}}</td><td> {{row[2]}}</td><td> {{row[3]}}</td>
- </tr>
-{% endfor %}
-</table>
+        <form name = "form1" action = {{ url_for('insertNumber') }} method = "POST" role = "form" id = "InsertNumberForm">
+                <div>
+                    <p>Insert
+                    <input type = "text" name = "Eid" placeholder="Eid">
+                    <input type = "text" name = "PrisonName" placeholder="Prison Name">
+                    <input type = "text" name = "Phonenumber" placeholder="Phone Number">   
+                    <select name = "UpdateColumn" form="InsertNumberForm">
+                            <option value="Mobile">Mobile</option>
+                            <option value="Home">Home</option>
+                            <option value="Office">Office</option>
+                    </select>
+                    <input type = "submit" value = "Insert">
+                    </p>
+                </div>
+            </form>
+        
+            <form name = "form2" action = {{ url_for('deleteNumber') }} method = "POST" role = "form" id = "DeleteNumberForm">
+                <p>Delete   
+                    <input type = "text" name = "Eid2" placeholder="Eid">
+                    <input type = "text" name = "PrisonName2" placeholder="Prison Name">
+                    <input type = "text" name = "Phonenumber2" placeholder="Phone Number">   
+                    <input type = "submit" value = "Delete">
+                </p>
+            </form>
+        
+            <form name = "form3" action = {{ url_for('updateNumber') }} method = "POST" role = "form" id = "UpdateNumberForm">
+                <p>Update
+                    <select name = "UpdateColumn2" form="UpdateNumberForm">
+                                    <option value="Phonenumber">Phone Number</option>
+                                    <option value="NumberType">Number Type</option>
+                    </select>
+                    <input type = "text" name = "Value" placeholder="Value">
+                    <input type = "text" name = "Eid3" placeholder="Eid">
+                    <input type = "text" name = "PrisonName3" placeholder="Prison Name">
+                    <input type = "text" name = "Phonenumber3" placeholder="Phone Number">
+                    <input type = "submit" value = "Update">
+                </p>
+            </form>
+    <h1>PHONENUMBER TABLE</h1>
+   <table border=1>
+   <thead>
+   <td>Eid</td><td>PrisonName</td><td>Phonenumber</td><td>Number Type</td>
+   </thead>
+   {% for row in rows %}
+   <tr>
+   <td>{{row[0]}}</td><td>{{row[1]}}</td><td> {{row[2]}}</td><td> {{row[3]}}</td>
+    </tr>
+   {% endfor %}
+   </table>
 </center>
-</body>
-</html>
+{%endblock%}

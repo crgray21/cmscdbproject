@@ -1,19 +1,57 @@
-<!doctype html>
-<html>
-<body>
+{% extends "index.html" %}
+{%block title%}Prison Table{%endblock%}
+{%block head%}
+    {{ super() }}
+{%endblock%}
+{%block content%}
 <center>
- <h1> PRISON TABLE</h1>
-<table border=1>
-<thead>
-<td>PrisonName</td><td>Location_of_prison</td><td>size_of_prison</td><td>PrisonGender</td><td>Director</td>
-</thead>
-{% for row in rows %}
-<tr>
-<td>{{row[0]}}</td><td>{{row[1]}}</td><td> {{
-row[2]}}</td><td>{{row[3]}}</td><td>{{row[4]}}</td>
- </tr>
-{% endfor %}
-</table>
+        <form name = "form1" action = {{ url_for('insertPrison') }} method = "POST" role = "form" id = "prisonInsertForm">
+                <div>
+                    <p>Insert
+                    <input type = "text" name = "PrisonName" placeholder="Prison Name">
+                    <input type = "text" name = "PrisonLocation" placeholder="Location">   
+                    <input type = "number" name = "PrisonSize" placeholder="Size"> 
+                    <select name = "Gender" form="prisonInsertForm">
+                            <option value="M">Male</option>
+                            <option value="F">Female</option>
+                    </select>
+                    <input type = "text" name="Director" placeholder="Director Name"> 
+                    <input type = "submit" value = "Insert">
+                    </p>
+                </div>
+            </form>
+        
+            <form name = "form2" action = {{ url_for('deletePrison') }} method = "POST" role = "form" id = "prisonDeleteForm">
+                <p>Delete   
+                    <input type = "text" name = "PrisonName2" placeholder="Prison Name">
+                    <input type = "submit" value = "Delete">
+                </p>
+            </form>
+        
+            <form name = "form3" action = {{ url_for('updatePrison') }} method = "POST" role = "form" id = "prisonUpdateForm">
+                <p>Update
+                    <select name = "UpdateColumn" form="prisonUpdateForm">
+                                    <option value="Location_of_prison">Location</option>
+                                    <option type = "number" value="size_of_prison">Size</option>
+                                    <option value="PrisonGender">Gender</option>
+                                    <option value="Director">Director Name</option>
+                    </select>
+                    <input type = "text" name = "Value" placeholder="Value">
+                    <input type = "text" name = "PrisonName3" placeholder="Prison Name">
+                    <input type = "submit" value = "Update">
+                </p>
+            </form>
+    <h1>PRISON TABLE</h1>
+   <table border=1>
+   <thead>
+   <td>PrisonName</td><td>Location_of_prison</td><td>size_of_prison</td><td>PrisonGender</td><td>Director</td>
+   </thead>
+   {% for row in rows %}
+   <tr>
+   <td>{{row[0]}}</td><td>{{row[1]}}</td><td> {{
+   row[2]}}</td><td>{{row[3]}}</td><td>{{row[4]}}</td>
+    </tr>
+   {% endfor %}
+   </table>
 </center>
-</body>
-</html>
+{%endblock%}
